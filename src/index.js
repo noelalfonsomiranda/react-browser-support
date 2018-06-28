@@ -4,6 +4,14 @@ const { detect } = require('detect-browser');
 import cmp from 'semver-compare';
 import './style.scss';
 
+export const detectBrowser = data => {
+    console.log('data', data)
+    return {
+        ...detect(),
+        message: 'data.message',
+        supported: 'data.supported'
+    }
+}
 export default class BrowserSupport extends Component {
     static propTypes = {
         supported: PropTypes.object.isRequired,
@@ -61,14 +69,5 @@ export default class BrowserSupport extends Component {
             supported: true,
             message: `${browser.name} version ${browser.version} is supported`
         }, () => detectBrowser(this.state))
-    }
-}
-
-export const detectBrowser = data => {
-    console.log('data', data)
-    return {
-        ...detect(),
-        message: data.message,
-        supported: data.supported
     }
 }
