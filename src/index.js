@@ -6,11 +6,12 @@ import './style.scss';
 export const detectBrowser = data => {
   console.log('data', data)
   
-  return {
-    ...detect(),
-    message: '',
-    supported: true
-  }
+  return data && data
+  // return {
+  //   ...detect(),
+  //   message: '',
+  //   supported: true
+  // }
 }
 export default class BrowserSupport extends Component {
   static propTypes = {
