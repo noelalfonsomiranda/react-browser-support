@@ -3,16 +3,11 @@ import { detect } from 'detect-browser';
 import cmp from 'semver-compare';
 import './style.scss';
 
-export const detectBrowser = data => {
-  console.log('data', data)
-  
-  return data && data
-  // return {
-  //   ...detect(),
-  //   message: '',
-  //   supported: true
-  // }
+export const detectBrowser = () => {
+  browserInfo()
 }
+
+export const browserInfo = data => data && data
 export default class BrowserSupport extends Component {
   static propTypes = {
     supported: PropTypes.object.isRequired,
@@ -48,7 +43,7 @@ export default class BrowserSupport extends Component {
       browser,
       supported: false,
       message: `${browser.name} version ${browser.version} is not currently supported`,
-    }, () => detectBrowser(this.state));
+    }, () => browserInfo(this.state));
   }
 
   setAsSupported = (browser) => {
@@ -56,13 +51,13 @@ export default class BrowserSupport extends Component {
       browser,
       supported: true,
       message: `${browser.name} version ${browser.version} is supported`
-    }, () => detectBrowser(this.state));
+    }, () => browserInfo(this.state));
   }
 
   componentDidMount() {
     const browser = detect();
     this.determineBrowserSupport(browser);
-    detectBrowser(this.state);
+    // browserInfo(this.state);
   }
   
   render() {
