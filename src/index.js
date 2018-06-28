@@ -64,11 +64,10 @@ export default class BrowserSupport extends Component {
     }
 }
 
-export const detectBrowser = (data) => {
-    console.log('data', data)
+export const detectBrowser = data => {
     return {
         ...detect(),
-        message: 'data.message',
-        supported: 'data.supported'
+        message: data && data.message,
+        supported: data && data.supported
     }
 }
