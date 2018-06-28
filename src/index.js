@@ -47,7 +47,7 @@ export default class BrowserSupport extends Component {
       browser,
       supported: false,
       message: `${browser.name} version ${browser.version} is not currently supported`,
-    }, () => isSupported(this.state));
+    });
   }
 
   setAsSupported = (browser) => {
@@ -55,12 +55,16 @@ export default class BrowserSupport extends Component {
       browser,
       supported: true,
       message: `${browser.name} version ${browser.version} is supported`
-    }, () => isSupported(this.state));
+    });
   }
 
   componentDidMount() {
     const browser = detect();
     this.determineBrowserSupport(browser);
+  }
+
+  componentWillReceiveProps () {
+    isSupported(this.state)
   }
   
   render() {
