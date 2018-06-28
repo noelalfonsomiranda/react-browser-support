@@ -1,17 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 const { detect } = require('detect-browser');
-// const cmp = require('semver-compare');
 import cmp from 'semver-compare';
 import './style.scss';
 
 export const detectBrowser = data => {
   console.log(data)
   
-  return {
-    ...detect(),
-    message: data.message,
-    supported: data.supported
-  }
+  // return {
+  //   ...detect(),
+  //   message: data.message,
+  //   supported: data.supported
+  // }
 }
 export default class BrowserSupport extends Component {
   static propTypes = {
@@ -60,6 +59,7 @@ export default class BrowserSupport extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state)
     const browser = detect();
     this.determineBrowserSupport(browser);
     detectBrowser(this.state);
@@ -78,5 +78,4 @@ export default class BrowserSupport extends Component {
       </div>
     ) : null
   }
-    
 }
