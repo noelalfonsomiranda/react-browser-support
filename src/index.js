@@ -55,9 +55,8 @@ export default class BrowserSupport extends Component {
         }
     }
     setAsUnsupported(browser) {
-        const data = Object.assign({supported: false}, browser)
         this.setState({
-            data,
+            browser,
             supported: false,
             message: `${browser.name} version ${browser.version} is not currently supported`,
         }, () => console.log(this.state))
