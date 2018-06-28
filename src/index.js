@@ -2,13 +2,7 @@ import React, { Component, PropTypes } from 'react';
 const { detect } = require('detect-browser');
 // const cmp = require('semver-compare');
 import cmp from 'semver-compare';
-import './style.scss';export const detectBrowser = () => {
-    return {
-        ...detect(),
-        message: '',
-        supported: true,
-    }
-}
+import './style.scss';
 
 export default class BrowserSupport extends Component {
     static propTypes = {
@@ -67,5 +61,13 @@ export default class BrowserSupport extends Component {
             supported: true,
             message: `${browser.name} version ${browser.version} is supported`
         }, () => console.log(this.state))
+    }
+}
+
+export const detectBrowser = () => {
+    return {
+        ...detect(),
+        message: this.state.message,
+        supported: this.state.supported
     }
 }
