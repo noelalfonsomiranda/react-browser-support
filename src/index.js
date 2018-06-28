@@ -5,14 +5,13 @@ import cmp from 'semver-compare';
 import './style.scss';
 
 export const detectBrowser = data => {
-  if (data)
+  console.log(data)
+  
   return {
     ...detect(),
-    message: data.message,
-    supported: data.supported
+    message: data && data.message,
+    supported: data && data.supported
   }
-
-  return {}
 }
 export default class BrowserSupport extends Component {
     static propTypes = {
