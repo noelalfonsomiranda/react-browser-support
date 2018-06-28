@@ -7,11 +7,11 @@ import './style.scss';
 export const detectBrowser = data => {
   console.log(data)
   
-  return {
-    ...detect(),
-    message: 'data.message',
-    supported: 'data.supported'
-  }
+  // return {
+  //   ...detect(),
+  //   message: 'data.message',
+  //   supported: 'data.supported'
+  // }
 }
 export default class BrowserSupport extends Component {
   static propTypes = {
@@ -48,7 +48,11 @@ export default class BrowserSupport extends Component {
       browser,
       supported: false,
       message: `${browser.name} version ${browser.version} is not currently supported`,
-    }, () => detectBrowser(this.state))
+    }, () => detectBrowser({
+      browser: this.state.browser,
+      supported: this.state.supported,
+      message: this.state.message
+    }))
   }
 
   setAsSupported(browser) {
@@ -59,7 +63,7 @@ export default class BrowserSupport extends Component {
     }, () => detectBrowser(this.state))
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const browser = detect();
     this.determineBrowserSupport(browser);
   }
