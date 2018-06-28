@@ -53,21 +53,21 @@ export default class BrowserSupport extends Component {
             browser,
             supported: false,
             message: `${browser.name} version ${browser.version} is not currently supported`,
-        }, () => console.log(this.state))
+        }, () => detectBrowser(this.state))
     }
     setAsSupported(browser) {
         this.setState({
             browser,
             supported: true,
             message: `${browser.name} version ${browser.version} is supported`
-        }, () => console.log(this.state))
+        }, () => detectBrowser(this.state))
     }
 }
 
-export const detectBrowser = () => {
+export const detectBrowser = (data) => {
     return {
         ...detect(),
-        message: this.state.message,
-        supported: this.state.supported
+        message: data.message,
+        supported: data.supported
     }
 }
