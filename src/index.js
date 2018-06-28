@@ -5,12 +5,12 @@ import './style.scss';
 
 export const detectBrowser = data => {
   console.log('data', data)
-  
-  return {
-    ...detect(),
-    message: 'data.message',
-    supported: 'data.supported'
-  }
+  return data
+  // return {
+  //   ...detect(),
+  //   message: 'data.message',
+  //   supported: 'data.supported'
+  // }
 }
 export default class BrowserSupport extends Component {
   static propTypes = {
