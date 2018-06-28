@@ -9,8 +9,8 @@ export const detectBrowser = data => {
   
   return {
     ...detect(),
-    message: data.message,
-    supported: data.supported
+    message: 'data.message',
+    supported: 'data.supported'
   }
 }
 export default class BrowserSupport extends Component {
@@ -59,7 +59,7 @@ export default class BrowserSupport extends Component {
     }, () => detectBrowser(this.state))
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const browser = detect();
     this.determineBrowserSupport(browser);
   }
