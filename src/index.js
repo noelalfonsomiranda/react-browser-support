@@ -4,14 +4,11 @@ import cmp from 'semver-compare';
 import './style.scss';
 
 export const detectBrowser = data => {
-  console.log('data', data)
-
-  // if (data) return data
-  
   return {
     ...detect(),
-    message: 'data.message',
-    supported: 'data.supported'
+    message: '',
+    supported: true,
+    data: data && data
   }
 }
 export default class BrowserSupport extends Component {
@@ -63,7 +60,6 @@ export default class BrowserSupport extends Component {
   componentDidMount() {
     const browser = detect();
     this.determineBrowserSupport(browser);
-    detectBrowser(this.state);
   }
   
   render() {
