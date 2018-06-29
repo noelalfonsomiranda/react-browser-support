@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BrowserSupport, { detectBrowser } from '../dist'
 
-class Application extends React.PureComponent {
+class Application extends React.Component {
   state = {
     browser: {}
   }
   
   componentDidMount() {
     this.setState({ browser: detectBrowser() })
-}
+  }
 
   render() {
     const minBrowserVersions = {
@@ -20,7 +20,7 @@ class Application extends React.PureComponent {
       opera: '10.0',
       safari: '10.2',
     }
-    
+
     console.log('browser', this.state.browser)
 
     return <div>

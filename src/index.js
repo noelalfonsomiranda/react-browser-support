@@ -3,8 +3,13 @@ import { detect } from 'detect-browser';
 import cmp from 'semver-compare';
 import './style.scss';
 
-export const detectBrowser = () => ({ ...detect() })
-export default class BrowserSupport extends Component {
+export const detectBrowser = (data) => {
+  console.log('data', data)
+  return {
+    data
+  }
+}
+export default class BrowserSupport extends React.Component {
   static propTypes = {
     supported: PropTypes.object.isRequired,
   }
@@ -48,6 +53,13 @@ export default class BrowserSupport extends Component {
       supported: true,
       message: `${browser.name} version ${browser.version} is supported`
     });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state !== nextState) {
+      detectBrowser(nextState);
+    }
+    return true
   }
 
   componentDidMount() {
